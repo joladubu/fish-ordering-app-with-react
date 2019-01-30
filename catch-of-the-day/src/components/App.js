@@ -1,4 +1,4 @@
-import React from 'react';
+    import React from 'react';
 import Header from './Header';
 import Order from './Order';
 import Inventory from './Inventory';
@@ -54,6 +54,18 @@ class App extends React.Component {
         */
         this.setState({ fishes });
     };
+
+
+    updateFish = (key, updatedFish) => {
+        // 1. Take a copy of the current state
+        const fishes = {...this.state.fishes};
+        //2. Update that stdate
+        fishes[key] = updatedFish;
+        //3. Set that to State
+        this.setState({ fishes});
+    }
+
+
         // A method to load Fishes
     loadSampleFishes = () => {
         this.setState({ fishes: sampleFishes });
@@ -91,7 +103,9 @@ class App extends React.Component {
             and loadSampleFishes for the Inventory component */}
             <Inventory
                 addFish={this.addFish}
+                updateFish={this.updateFish}
                 loadSampleFishes={this.loadSampleFishes}
+                fishes={this.state.fishes}
             />
          </div>
      )
