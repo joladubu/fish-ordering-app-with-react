@@ -1,10 +1,23 @@
 import React from 'react';
+import propTypes from 'prop-types';
 import { formatPrice } from '../helpers';
 
 //importing module for emoji
 // import Emoji from 'react-emoji-render';
 
 class Fish extends React.Component {
+    //decalaring proptypes for the fish componen
+    static propTypes = {
+        details: propTypes.shape({
+            image : propTypes.string,
+            name : propTypes.string,
+            desc : propTypes.string,
+            status : propTypes.string,
+            price : propTypes.number
+        }),
+        addToOrder: propTypes.func,
+    }
+
     handleClick = () => {
         this.props.addToOrder(this.props.index);
     };
@@ -28,5 +41,7 @@ class Fish extends React.Component {
         );
     }
 }
+
+
 
 export default Fish;
